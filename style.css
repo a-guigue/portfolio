@@ -55,7 +55,7 @@
         /* Hero Section */
         .hero {
             /*background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);*/
-            background-image: url("assets/baniere_portfolio.png");
+            background-image: url("baniere_portfolio.png");
             background-repeat: no-repeat;
             background-size: cover;
             color: white;
