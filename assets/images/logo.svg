@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <!-- Cercle globe -->
+    <circle cx="50" cy="50" r="45" fill="none" stroke="#667eea" stroke-width="4"/>
+
+    <!-- Méridien -->
+    <ellipse cx="50" cy="50" rx="18" ry="45" fill="none" stroke="#667eea" stroke-width="2"/>
+
+    <!-- Parallèle -->
+    <ellipse cx="50" cy="50" rx="45" ry="18" fill="none" stroke="#667eea" stroke-width="2"/>
+
+    <!-- Code au centre -->
+    <text
+            x="50"
+            y="58"
+            text-anchor="middle"
+            font-size="28"
+            fill="#667eea"
+            font-family="monospace"
+            font-weight="bold">
+        &lt;/&gt;
+    </text>
+</svg>
