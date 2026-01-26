@@ -3,108 +3,637 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <title>Portfolio Aurélien Guigue</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #667eeaa9 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h1 {
+            font-size: 1.5rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            padding: 150px 2rem 100px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        /* Sections */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        h3 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #667eea;
+        }
+
+        /* About Section */
+        .about-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Timeline avec cartes retournables */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+            max-width: 900px;
+            margin: 0 auto;
+            min-height: 800px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            width: calc(50% - 60px);
+            margin-bottom: 60px;
+        }
+
+        .timeline-item:nth-child(odd) {
+            margin-left: 0;
+            margin-right: calc(50% + 60px);
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-left: calc(50% + 60px);
+        }
+
+        .timeline-item:nth-child(odd) .flip-card {
+            float: right;
+        }
+
+        .timeline-item:nth-child(even) .flip-card {
+            float: left;
+        }
+
+        /* Carte retournable */
+        .flip-card {
+            width: 100%;
+            max-width: 350px;
+            height: 200px;
+            perspective: 1200px;
+            cursor: pointer;
+            margin: 0 auto;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.7s cubic-bezier(.2,.9,.3,1);
+            transform-style: preserve-3d;
+        }
+
+        .flip-card.is-flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .flip-card-front {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .flip-card-front .year {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .flip-card-front .icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .flip-card-back {
+            background: white;
+            transform: rotateY(180deg);
+            text-align: left;
+            overflow-y: auto;
+            padding: 1.5rem;
+            box-sizing: border-box;
+        }
+
+        .flip-card-back h4 {
+            color: #667eea;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            text-align: center;
+        }
+
+        .flip-card-back p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        /* Flèche vers la timeline - enfant de flip-card */
+        .flip-card::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
+            width: 16px;
+            height: 16px;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 2px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .timeline-item:nth-child(odd) .flip-card::after {
+            right: -58px;
+        }
+
+        .timeline-item:nth-child(even) .flip-card::after {
+            left: -58px;
+        }
+
+        /* Point sur la timeline - enfant de flip-card */
+        .flip-card::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid #667eea;
+            border-radius: 50%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .timeline-item:nth-child(odd) .flip-card::before {
+            right: -70px;
+        }
+
+        .timeline-item:nth-child(even) .flip-card::before {
+            left: -70px;
+        }
+
+        /* Indication de clic */
+        .flip-card-inner::after {
+            content: "Cliquez pour voir plus";
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.85rem;
+            color: #667eea;
+            opacity: 0.7;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            white-space: nowrap;
+        }
+
+        .flip-card.is-flipped .flip-card-inner::after {
+            content: "Cliquez pour fermer";
+        }
+
+        .flip-card:hover {
+            transform: scale(1.02);
+            transition: transform 0.3s ease;
+        }
+
+        /* Compétences */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .skill-card h4 {
+            color: #667eea;
+            font-size: 1.3rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-item strong {
+            color: #667eea;
+            min-width: 100px;
+        }
+
+        .contact-item a {
+            color: #667eea;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .contact-item a:hover {
+            opacity: 0.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            background: #764ba2;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: center;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .timeline::before {
+                left: 20px;
+                transform: none;
+            }
+
+            .timeline-item {
+                width: 100%;
+                margin: 0 0 60px 40px !important;
+                text-align: left;
+            }
+
+            .timeline-item::after {
+                left: 12px !important;
+                right: auto !important;
+            }
+
+            .timeline-item::before {
+                left: 5px !important;
+                right: auto !important;
+            }
+
+            .flip-card {
+                max-width: calc(100% - 20px);
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <nav>
-        <div class="container">
-            <h1>Portfolio Aurélien Guigue</h1>
-            <ul>
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#apropos">À propos</a></li>
-                <li><a href="#parcours">Parcours</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+<nav>
+    <div class="container">
+        <h1>Portfolio Aurélien Guigue</h1>
+        <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#apropos">À propos</a></li>
+            <li><a href="#parcours">Parcours</a></li>
+            <li><a href="#compétences">Compétences</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="hero" id="accueil">
+    <h2>Aurélien Guigue</h2>
+    <p>Étudiant passionné en Cybersécurité, Informatique et Électronique</p>
+</section>
+
+<section id="apropos">
+    <h3>À PROPOS</h3>
+    <div class="about-content">
+        <div class="about-text">
+            <p>Bonjour ! Je suis Aurélien Guigue, actuellement étudiant en seconde CIEL (Cybersécurité, Informatique, Électronique et réseau) au lycée professionnel Notre Dame De La Riche.</p>
+            <p>Passionné par l'informatique et les nouvelles technologies, je me forme aux métiers de la cybersécurité et du développement. Mon parcours m'a permis d'acquérir discipline, rigueur et esprit d'équipe.</p>
         </div>
-    </nav>
+    </div>
+</section>
 
-    <section class="hero" id="accueil">
-        <h2>Aurélien Guigue</h2>
-        <p>Étudiant passionné en Cybersécurité, Informatique et Électronique</p>
-    </section>
-
-    <section id="apropos">
-        <h3>À PROPOS</h3>
-        <div class="about-content">
-            <div class="about-text">
-                <p>Bonjour ! Je suis Aurélien Guigue, actuellement étudiant en seconde CIEL (Cybersécurité, Informatique, Électronique et réseau) au lycée professionnel Notre Dame De La Riche.</p>
-                <p>Passionné par l'informatique et les nouvelles technologies, je me forme aux métiers de la cybersécurité et du développement. Mon parcours m'a permis d'acquérir discipline, rigueur et esprit d'équipe.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="parcours">
-        <h3>PARCOURS SCOLAIRE</h3>
-        <div class="timeline">
-            <div class="timeline-item">
-                <span class="year">2025 - 2028</span>
-                <h4>Lycée Notre Dame la Riche</h4>
-                <p>J'étudie actuellement au lycée Notre Dame la Riche dans le domaine de la cybersécurité, l'informatique et l'électronique. Cette formation professionnelle me permet d'acquérir les compétences techniques essentielles pour ma future carrière dans le secteur de l'informatique.</p>
-            </div>
-            <div class="timeline-item">
-                <span class="year">2024-2025</span>
-                <h4>Prytanée National Militaire</h4>
-                <p>J'ai eu la chance de faire une première seconde au Prytanée National Militaire où j'ai pu apprendre la discipline, le dépassement de soi et la cohésion. Cette expérience unique m'a forgé un caractère rigoureux et m'a enseigné l'importance du travail d'équipe.</p>
-            </div>
-            <div class="timeline-item">
-                <span class="year">2020-2024</span>
-                <h4>Collège Jean-Philippe Rameau</h4>
-                <p>J'ai étudié de la 6ème jusqu'à la 3ème au collège Jean-Philippe Rameau où j'ai obtenu mon brevet avec la mention assez bien. Cette période m'a permis de développer mes bases académiques et de découvrir ma passion pour l'informatique.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="compétences">
-        <h3>COMPÉTENCE</h3>
-        <div class="timeline">
-            <div class="timeline-item">
-                <h4>Python</h4>
-            </div>
-            <div class="timeline-item">
-                <h4>HTML</h4>
-            </div>
-            <div class="timeline-item">
-                <h4>CSS</h4>
-            </div>
-            <div class="timeline-item">
-                <h4>Unity</h4>
-            </div>
-            <div class="timeline-item">
-                <h4>Unreal Engine 4</h4>
-            </div>
-            <div class="timeline-item">
-                <h4>Réseau</h4>
-            </div>
-            <div class="timeline-item">
-                <h4>Certification CyberSécurité</h4>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <h3>CONTACT</h3>
-        <div class="contact-content">
-            <div class="contact-info">
-                <h4>Coordonnées</h4>
-                <div class="contact-item">
-                    <strong>Ville :</strong>
-                    <span>37170, Chambray-lès-Tours, France</span>
-                </div>
-                <div class="contact-item">
-                    <strong>E-mail :</strong>
-                    <a href="mailto:aurelien.guigue.pro@gmail.com">aurelien.guigue.pro@gmail.com</a>
-                </div>
-                <div class="social-links">
-                    <a href="http://www.linkedin.com/in/aurelien-guigue" target="_blank">LinkedIn</a>
-                    <a href="assets/Aurélien_GUIGUE_CV.pdf" target="_blank" download="Aurélien_GUIGUE_CV">Mon CV</a>
+<section id="parcours">
+    <h3>PARCOURS SCOLAIRE</h3>
+    <div class="timeline">
+        <!-- Item 1 - Lycée -->
+        <div class="timeline-item">
+            <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="2025 à 2028, voir détails">
+                <div class="flip-card-inner">
+                    <div class="flip-card-face flip-card-front">
+                        <div class="icon">🎓</div>
+                        <div class="year">2025 - 2028</div>
+                    </div>
+                    <div class="flip-card-face flip-card-back">
+                        <h4>Lycée Notre Dame la Riche</h4>
+                        <p>J'étudie actuellement au lycée Notre Dame la Riche dans le domaine de la cybersécurité, l'informatique et l'électronique. Cette formation professionnelle me permet d'acquérir les compétences techniques pour ma carrière dans l'informatique.</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
-    <footer>
-        <p>© 2035 par Aurélien Guigue. Tous droits réservés.</p>
-    </footer>
+
+        <!-- Item 2 - Prytanée -->
+        <div class="timeline-item">
+            <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="2024 à 2025, voir détails">
+                <div class="flip-card-inner">
+                    <div class="flip-card-face flip-card-front">
+                        <div class="icon">⚔️</div>
+                        <div class="year">2024 - 2025</div>
+                    </div>
+                    <div class="flip-card-face flip-card-back">
+                        <h4>Prytanée National Militaire</h4>
+                        <p>J'ai eu la chance de faire une première seconde au Prytanée National Militaire où j'ai pu apprendre la discipline, le dépassement de soi et la cohésion. Cette expérience unique m'a forgé un caractère rigoureux et m'a enseigné l'importance du travail d'équipe.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Item 3 - Collège -->
+        <div class="timeline-item">
+            <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="2020 à 2024, voir détails">
+                <div class="flip-card-inner">
+                    <div class="flip-card-face flip-card-front">
+                        <div class="icon">📚</div>
+                        <div class="year">2020 - 2024</div>
+                    </div>
+                    <div class="flip-card-face flip-card-back">
+                        <h4>Collège Jean-Philippe Rameau</h4>
+                        <p>J'ai étudié de la 6ème jusqu'à la 3ème au collège Jean-Philippe Rameau où j'ai obtenu mon brevet avec la mention assez bien. Cette période m'a permis de développer mes bases académiques et de découvrir ma passion pour l'informatique.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="compétences">
+    <h3>COMPÉTENCES</h3>
+    <div class="skills-grid">
+        <div class="skill-card">
+            <h4>🐍 Python</h4>
+        </div>
+        <div class="skill-card">
+            <h4>🌐 HTML</h4>
+        </div>
+        <div class="skill-card">
+            <h4>🎨 CSS</h4>
+        </div>
+        <div class="skill-card">
+            <h4>🎮 Unity</h4>
+        </div>
+        <div class="skill-card">
+            <h4>🎯 Unreal Engine 4</h4>
+        </div>
+        <div class="skill-card">
+            <h4>🔌 Réseau</h4>
+        </div>
+        <div class="skill-card">
+            <h4>🔒 Certification Cybersécurité</h4>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <h3>CONTACT</h3>
+    <div class="contact-content">
+        <div class="contact-info">
+            <div class="contact-item">
+                <strong>📍 Ville :</strong>
+                <span>37170, Chambray-lès-Tours, France</span>
+            </div>
+            <div class="contact-item">
+                <strong>📧 E-mail :</strong>
+                <a href="mailto:aurelien.guigue.pro@gmail.com">aurelien.guigue.pro@gmail.com</a>
+            </div>
+            <div class="social-links">
+                <a href="http://www.linkedin.com/in/aurelien-guigue" target="_blank">📄 LinkedIn</a>
+                <a href="assets/Aurélien_GUIGUE_CV.pdf" target="_blank" download="Aurélien_GUIGUE_CV">📄 Mon CV</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2025 par Aurélien Guigue. Tous droits réservés.</p>
+</footer>
+
+<script>
+    // Activation du flip au clic et au clavier
+    document.querySelectorAll('.flip-card').forEach(card => {
+        const toggle = (ev) => {
+            if (ev.target.closest('a')) return;
+            const isFlipped = card.classList.toggle('is-flipped');
+            card.setAttribute('aria-pressed', String(isFlipped));
+        };
+
+        card.addEventListener('click', toggle);
+
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggle(e);
+            }
+            if (e.key === 'Escape') {
+                card.classList.remove('is-flipped');
+                card.setAttribute('aria-pressed', 'false');
+            }
+        });
+
+        // Fermer la carte si clic en dehors
+        document.addEventListener('click', (e) => {
+            if (!card.contains(e.target) && card.classList.contains('is-flipped')) {
+                card.classList.remove('is-flipped');
+                card.setAttribute('aria-pressed', 'false');
+            }
+        }, true);
+    });
+
+    // Smooth scroll pour la navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+</script>
 </body>
 </html>
