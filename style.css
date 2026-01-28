@@ -317,7 +317,7 @@ h3 {
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
-    /*animation: fadeInUp 0.8s ease;*/
+    animation: fadeInUp 0.8s ease;
 }
 
 .skill-card:hover {
