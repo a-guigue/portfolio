@@ -38,3 +38,42 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+const burger = document.querySelector(".burger");
+const navLinks = document.querySelector(".nav-links");
+
+burger.addEventListener("click", () => {
+    burger.classList.toggle("active");
+    navLinks.classList.toggle("active");
+
+    const expanded = burger.getAttribute("aria-expanded") === "true";
+    burger.setAttribute("aria-expanded", !expanded);
+});
+
+/* Fermer le menu quand on clique sur un lien */
+document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+        burger.classList.remove("active");
+        navLinks.classList.remove("active");
+        burger.setAttribute("aria-expanded", "false");
+    });
+});
+
+//detection du scroll
+const elements = document.querySelectorAll(".scroll-animate");
+
+const observer = new IntersectionObserver(
+    (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target); // animation une seule fois
+            }
+        });
+    },
+    {
+        threshold: 0.2
+    }
+);
+
+elements.forEach(el => observer.observe(el));

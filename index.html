@@ -11,7 +11,16 @@
 <nav>
     <div class="container">
         <h1>Portfolio Aurélien Guigue</h1>
-        <ul>
+
+        <!-- Bouton burger -->
+        <button class="burger" aria-label="Menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Menu -->
+        <ul class="nav-links">
             <li><a href="#accueil">Accueil</a></li>
             <li><a href="#apropos">À propos</a></li>
             <li><a href="#parcours">Parcours</a></li>
@@ -22,12 +31,13 @@
     </div>
 </nav>
 
+
 <section class="hero" id="accueil">
     <h2>Aurélien Guigue</h2>
     <p>Étudiant passionné en Cybersécurité, Informatique et Électronique</p>
 </section>
 
-<section id="apropos">
+<section id="apropos" class="scroll-animate">
     <h3>À PROPOS</h3>
     <div class="about-content">
         <div class="about-text">
@@ -37,7 +47,7 @@
     </div>
 </section>
 
-<section id="parcours">
+<section id="parcours" class="scroll-animate">
     <h3>PARCOURS SCOLAIRE</h3>
     <div class="timeline">
         <!-- Item 1 - Lycée -->
@@ -90,7 +100,7 @@
     </div>
 </section>
 
-<section id="compétences">
+<section id="compétences" class="scroll-animate">
     <h3>COMPÉTENCES</h3>
     <div class="skills-grid">
         <div class="skill-card">
@@ -124,7 +134,7 @@
     </div>
 </section>
 
-<section id="experience">
+<section id="experience" class="scroll-animate">
     <h3>EXPÉRIENCE</h3>
     <div class="skills-grid">
         <div class="skill-card">
@@ -147,7 +157,7 @@
     </div>
 </section>
 
-<section id="contact">
+<section id="contact" class="scroll-animate">
     <h3>CONTACT</h3>
     <div class="contact-content">
         <div class="contact-info">
