@@ -15,7 +15,7 @@ body {
 nav {
     background: linear-gradient(135deg, #667eeaa9 0%, #764ba2 100%);
     color: white;
-    padding: 1rem 0;
+    padding: 12px;
     position: fixed;
     width: 100%;
     top: 0;
@@ -55,7 +55,10 @@ nav a:hover {
 /* Hero Section */
 .hero {
     /*background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);*/
-    background-image: url("assets/images/baniere_portfolio.png");
+    background-image: url("assets/images/GUIGUE_Concours_IMG_7760.JPG");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     padding: 150px 2rem 100px;
