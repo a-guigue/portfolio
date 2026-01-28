@@ -583,46 +583,60 @@ footer {
         transition: 0.3s;
     }
 
-    /* Mobile */
+    /* ===================== */
+    /* RESPONSIVE TABLETTE */
+    /* ===================== */
     @media (max-width: 768px) {
 
-        .burger {
-            display: flex;
-            z-index: 1100;
-        }
-
-        .nav-links {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-
-            background: linear-gradient(135deg, #667eeaee 0%, #764ba2ee 100%);
-            backdrop-filter: blur(10px);
-
+        nav .container {
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-
-            transform: translateY(-100%);
-            opacity: 0;
-            transition: transform 0.5s ease, opacity 0.5s ease;
-
-            z-index: 1000;
+            gap: 1rem;
         }
 
-        .nav-links.active {
+        .hero h2 {
+            font-size: 2rem;
+        }
+
+        .about-content {
+            flex-direction: column;
+        }
+
+        .skills-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* ===================== */
+    /* RESPONSIVE MOBILE */
+    /* ===================== */
+    @media (max-width: 480px) {
+
+        section {
+            padding: 3rem 1rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+        }
+
+        .skill-card {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            transform: none !important;
+        }
+
+        .scroll-animate {
+            transform: translateY(20px);
+            opacity: 0;
+        }
+
+        .scroll-animate.visible {
             transform: translateY(0);
             opacity: 1;
         }
-
-        .nav-links li a {
-            font-size: 1.6rem;
-            font-weight: 500;
-        }
     }
+
 
     /* ===== ANIMATION AU SCROLL ===== */
     .scroll-animate {
@@ -634,6 +648,14 @@ footer {
     .scroll-animate.visible {
         opacity: 1;
         transform: translateY(0);
+    }
+
+    .skills-grid {
+        overflow: visible;
+    }
+
+    .skill-card {
+        will-change: transform;
     }
 
 
