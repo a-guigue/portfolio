@@ -317,7 +317,7 @@ h3 {
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
-    animation: fadeInUp 0.8s ease;
+    /*animation: fadeInUp 0.8s ease;*/
 }
 
 .skill-card:hover {
@@ -580,8 +580,9 @@ footer {
         height: 3px;
         background: white;
         border-radius: 2px;
-        transition: 0.3s;
+        transition: transform 0.4s ease, opacity 0.3s ease;
     }
+
 
     /* Mobile */
     @media (max-width: 768px) {
@@ -601,6 +602,7 @@ footer {
             background: linear-gradient(135deg, #667eeaee 0%, #764ba2ee 100%);
             backdrop-filter: blur(10px);
 
+            display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
@@ -624,17 +626,18 @@ footer {
         }
     }
 
-    /* ===== ANIMATION AU SCROLL ===== */
-    .scroll-animate {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.8s ease, transform 0.8s ease;
+    .burger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
     }
 
-    .scroll-animate.visible {
-        opacity: 1;
-        transform: translateY(0);
+    .burger.active span:nth-child(2) {
+        opacity: 0;
     }
+
+    .burger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
+
 
     .skills-grid {
         overflow: visible;
