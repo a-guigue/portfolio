@@ -583,60 +583,46 @@ footer {
         transition: 0.3s;
     }
 
-    /* ===================== */
-    /* RESPONSIVE TABLETTE */
-    /* ===================== */
+    /* Mobile */
     @media (max-width: 768px) {
 
-        nav .container {
-            flex-direction: column;
-            gap: 1rem;
+        .burger {
+            display: flex;
+            z-index: 1100;
         }
 
-        .hero h2 {
-            font-size: 2rem;
-        }
-
-        .about-content {
-            flex-direction: column;
-        }
-
-        .skills-grid {
-            grid-template-columns: 1fr;
-        }
-    }
-
-    /* ===================== */
-    /* RESPONSIVE MOBILE */
-    /* ===================== */
-    @media (max-width: 480px) {
-
-        section {
-            padding: 3rem 1rem;
-        }
-
-        h3 {
-            font-size: 1.8rem;
-        }
-
-        .skill-card {
+        .nav-links {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            max-width: 100%;
-            margin: 0 auto;
-            transform: none !important;
-        }
+            height: 100vh;
 
-        .scroll-animate {
-            transform: translateY(20px);
+            background: linear-gradient(135deg, #667eeaee 0%, #764ba2ee 100%);
+            backdrop-filter: blur(10px);
+
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+
+            transform: translateY(-100%);
             opacity: 0;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+
+            z-index: 1000;
         }
 
-        .scroll-animate.visible {
+        .nav-links.active {
             transform: translateY(0);
             opacity: 1;
         }
-    }
 
+        .nav-links li a {
+            font-size: 1.6rem;
+            font-weight: 500;
+        }
+    }
 
     /* ===== ANIMATION AU SCROLL ===== */
     .scroll-animate {
