@@ -638,14 +638,16 @@ footer {
         transform: rotate(-45deg) translate(6px, -6px);
     }
 
+    /*
 
-    .skills-grid {
-        overflow: visible;
-    }
 
-    .skill-card {
-        will-change: transform;
-    }
+        .skills-grid {
+            overflow: visible;
+        }
 
+        .skill-card {
+            will-change: transform;
+        }
+    */
 
 }
