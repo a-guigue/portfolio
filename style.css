@@ -312,6 +312,9 @@ h3 {
 }
 
 .skill-card {
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
     background: white;
     padding: 2rem;
     border-radius: 10px;
