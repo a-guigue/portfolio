@@ -501,6 +501,11 @@ footer {
 
     .flip-card {
         max-width: calc(100% - 20px);
+        padding: 14px;
+    }
+
+    .flip-card p {
+        font-size: 12px;
     }
 
     .skills-grid {
@@ -512,7 +517,8 @@ footer {
         grid-auto-rows: auto;
         gap: 2rem;
         align-content: start;
-        display: block; /* ← clé du fix */
+        display: flex;
+
     }
 
     .skill-card:hover {
