@@ -642,6 +642,20 @@ footer {
             position: relative;
         }
 
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-auto-rows: auto;
+            gap: 2rem;
+            align-content: start;
+        }
+
+        .skill-card {
+            position: static;
+            width: 100%;
+            height: auto;
+        }
+
         /*.skill-card {
             will-change: transform;
         }*/
