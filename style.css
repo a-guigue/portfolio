@@ -423,6 +423,39 @@ footer {
         align-items: center;
     }
 
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+
+        background: linear-gradient(135deg, #667eeaee 0%, #764ba2ee 100%);
+        backdrop-filter: blur(10px);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+
+        transform: translateY(-100%);
+        opacity: 0;
+        transition: transform 0.5s ease, opacity 0.5s ease;
+
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .nav-links li a {
+        font-size: 1.6rem;
+        font-weight: 500;
+    }
+
     .hero h2 {
         font-size: 2rem;
     }
@@ -452,126 +485,60 @@ footer {
         right: auto !important;
     }
 
+    .skill-card {
+        padding: 1.2rem;
+        font-size: 0.95rem;
+        overflow-wrap: break-word;
+        word-break: break-word;
+        transform: none !important;
+        will-change: auto !important;
+        animation: none !important;
+        width: 100%;
+        position: static;
+        height: auto;
+        margin-bottom: 2rem;
+    }
+
     .flip-card {
         max-width: calc(100% - 20px);
     }
 
     .skills-grid {
         grid-template-columns: 1fr;
+        transform: none !important;
+        will-change: auto !important;
+        animation: none !important;
+        overflow: hidden;
+        grid-auto-rows: auto;
+        gap: 2rem;
+        align-content: start;
+        display: block; /* ← clé du fix */
+    }
+
+    .skill-card:hover {
+        transform: none;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     }
 
     @media (max-width: 480px) {
-
-        /* Navigation plus compacte */
-        nav {
-            padding: 8px;
-        }
-
-        nav h1 {
-            font-size: 1.1rem;
-            text-align: center;
-        }
-
-        nav ul {
-            gap: 0.3rem;
-        }
-
-        nav a {
-            font-size: 0.95rem;
-        }
-
-        /* Hero */
-        .hero {
-            padding: 120px 1rem 80px;
-        }
-
-        .hero h2 {
-            font-size: 1.8rem;
-        }
-
-        .hero p {
-            font-size: 1rem;
-        }
-
-        /* Titres de section */
         h3 {
             font-size: 1.8rem;
         }
 
-        /* Sections */
         section {
             padding: 3rem 1rem;
         }
 
-        /* About */
-        .about-content {
-            padding: 1.5rem;
-        }
-
-        .about-text p {
-            font-size: 1rem;
-        }
-
-        /* Timeline simplifiée */
-        .timeline {
-            min-height: auto;
-            padding-left: 0;
-        }
-
-        .timeline::before {
-            display: none;
-        }
-
-        .timeline-item {
-            margin: 0 0 40px 0 !important;
-        }
-
-        .flip-card {
-            height: auto;
-            max-width: 100%;
-        }
-
-        .flip-card-face {
-            padding: 1.5rem;
-        }
-
-        .flip-card-inner::after {
-            display: none;
-        }
-
-        /* Skills & expérience */
         .skill-card {
-            padding: 1.5rem;
-        }
-
-        .skill-card h4 {
-            font-size: 1.1rem;
-        }
-
-        /* Contact */
-        .contact-content {
-            padding: 1.5rem;
-        }
-
-        .contact-item {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0.3rem;
-        }
-
-        .social-links {
-            flex-direction: column;
-        }
-
-        .social-links a {
-            width: 100%;
-            text-align: center;
+            padding: 1.1rem;
         }
     }
 
+
     /* ===== MENU BURGER ===== */
     .burger {
-        display: none;
+        display: flex;
+        z-index: 1100;
         background: none;
         border: none;
         cursor: pointer;
@@ -587,83 +554,6 @@ footer {
         transition: transform 0.4s ease, opacity 0.3s ease;
     }
 
-
-    /* Mobile */
-    @media (max-width: 768px) {
-
-        .burger {
-            display: flex;
-            z-index: 1100;
-        }
-
-        .nav-links {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-
-            background: linear-gradient(135deg, #667eeaee 0%, #764ba2ee 100%);
-            backdrop-filter: blur(10px);
-
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-
-            transform: translateY(-100%);
-            opacity: 0;
-            transition: transform 0.5s ease, opacity 0.5s ease;
-
-            z-index: 1000;
-        }
-
-        .nav-links.active {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .nav-links li a {
-            font-size: 1.6rem;
-            font-weight: 500;
-        }
-
-        .skills-grid,
-        .skill-card {
-            transform: none !important;
-            will-change: auto !important;
-            animation: none !important;
-        }
-
-        .skills-grid {
-            overflow: hidden;
-        }
-
-        .skill-card {
-            width: 100%;
-            position: relative;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-auto-rows: auto;
-            gap: 2rem;
-            align-content: start;
-        }
-
-        .skill-card {
-            position: static;
-            width: 100%;
-            height: auto;
-        }
-
-        /*.skill-card {
-            will-change: transform;
-        }*/
-    }
-
     .burger.active span:nth-child(1) {
         transform: rotate(45deg) translate(5px, 5px);
     }
@@ -675,12 +565,4 @@ footer {
     .burger.active span:nth-child(3) {
         transform: rotate(-45deg) translate(6px, -6px);
     }
-
-    .skill-card:hover {
-        transform: none;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    }
-
-
-
 }
