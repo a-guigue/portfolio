@@ -639,13 +639,22 @@ footer {
         transform: rotate(-45deg) translate(6px, -6px);
     }
 
+    .skill-card:hover {
+        transform: none;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
 
-        .skills-grid {
-            overflow: hidden;
-        }
+    .skills-grid {
+        overflow: hidden;
+    }
 
-        .skill-card {
-            will-change: transform;
-        }
+    .skill-card {
+        width: 100%;
+        position: relative;
+    }
+
+    /*.skill-card {
+        will-change: transform;
+    }*/
 
 }
