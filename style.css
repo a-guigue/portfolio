@@ -398,6 +398,11 @@ footer {
     padding: 2rem;
 }
 
+/* Certification */
+.certif{
+    align-self:auto;
+}
+
 /* Animations */
 @keyframes fadeInUp {
     from {
