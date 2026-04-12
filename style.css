@@ -37,6 +37,7 @@ nav .container {
 
 nav h1 {
     font-size: 1.5rem;
+    animation: typing 3s infinite;
 }
 
 nav ul {
