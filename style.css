@@ -611,6 +611,30 @@ footer {
         font-size: 12px;
     }
 
+    /* Contact : moins de marge intérieure, libellé au-dessus de la valeur */
+    .contact-content {
+        padding: 1.5rem;
+    }
+
+    .contact-item {
+        flex-wrap: wrap;
+        gap: 0.3rem 1rem;
+    }
+
+    .contact-item a {
+        word-break: break-word;
+    }
+
+    /* Boutons empilés en pleine largeur */
+    .social-links {
+        flex-direction: column;
+    }
+
+    .social-links a {
+        text-align: center;
+        white-space: nowrap;
+    }
+
     .skills-grid {
         grid-template-columns: 1fr;
         transform: none !important;
